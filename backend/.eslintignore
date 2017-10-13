@@ -1,6 +1,0 @@
-**/node_modules/*
-**/vendor/*
-**/*.min.js
-**/coverage/*
-**/build/*
-**/__API_URL__/*
