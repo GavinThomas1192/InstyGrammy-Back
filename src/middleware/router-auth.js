@@ -39,11 +39,11 @@ export default new Router()
         console.log('my oauth token:', token);
         res.cookie('X-Slugchat-Token', token);
         // console.log(res)
-        res.redirect(process.env.API_URL);
+        res.redirect(process.env.FRONT_URL);
       })
       .catch((error) => {
         console.error(error);
-        res.redirect(process.env.API_URL);
+        res.redirect(process.env.FRONT_URL);
       })
   }
 })
