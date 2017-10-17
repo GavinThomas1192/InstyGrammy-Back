@@ -10,6 +10,7 @@ export default new Router()
 
 .get('/oauth/google/code', (req, res, next) => {
   if(!req.query.code) {
+    console.log(req);
     res.redirect(process.env.FRONT_URL);
   } else {
     console.log('before the first post');
