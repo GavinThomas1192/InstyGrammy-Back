@@ -12,6 +12,7 @@ export default new Router()
   if(!req.query.code) {
     res.redirect(process.env.FRONT_URL);
   } else {
+    console.log('before the first post');
     superagent.post('https://www.googleapis.com/oauth2/v4/token')
       .type('form')
       .send({
@@ -22,11 +23,13 @@ export default new Router()
         redirect_uri: `${process.env.API_URL}/oauth/google/code`
       })
       .then(response => {
+        console.log('after first post response', response);
         console.log('POST: oauth2/v4/token', response.body);
         return superagent.get('https://www.googleapis.com/plus/v1/people/me/openIdConnect')
           .set('Authorization', `Bearer ${response.body.access_token}`)
       })
       .then(response => {
+        console.log('after second post response', response);
         console.log('GET: /people/me/openIdConnect', response.body);
         return User.handleOAUTH(response.body);
       })
