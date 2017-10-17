@@ -32,7 +32,7 @@ export default new Router()
         console.log('GET: /people/me/openIdConnect', response.body);
         return User.handleOAUTH(response.body);
       })
-      .then(user => console.log(user, '**********user'), user.tokenCreate())
+      .then(user => console.log(user, '**********user'), User.tokenCreate())
       .then(token => {
         console.log('my oauth token:', token);
         res.cookie('X-Slugchat-Token', token);
