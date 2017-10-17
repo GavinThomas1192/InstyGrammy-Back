@@ -57,5 +57,23 @@ User.create = function (user) {
     });
 };
 
+User.handleOAUTH = function(data) {
+  if(!data || !data.email) {
+    return Promise.reject(createError(400, 'VALIDATION ERROR - missing login info'))
+  }
+
+  return User.findOne({email: data.email})
+  .then(user => {
+    if(!user) throw new Error('not found - create user')
+    return user
+  })
+  .catch(() => {
+    return new User({
+      username: data.name.replace(' ', '_'),
+      email: data.email
+    }).save()
+  })
+}
+
 // INTERFACE
 export default User;
