@@ -10,7 +10,7 @@ export default new Router()
 
 .get('/oauth/google/code', (req, res, next) => {
   if(!req.query.code) {
-    res.redirect(process.env.API_URL);
+    res.redirect(process.env.FRONT_URL);
   } else {
     superagent.post('https://www.googleapis.com/oauth2/v4/token')
       .type('form')
