@@ -20,7 +20,7 @@ export default new Router()
         grant_type: 'authorization_code',
         client_id: process.env.GOOGLE_CLIENT_ID,
         client_secret: process.env.GOOGLE_CLIENT_SECRET,
-        redirect_uri: `${process.env.FRONT_URL}`
+        redirect_uri: `${process.env.API_URL}/oauth/google/code`
       })
       .then(response => {
         console.log('after first post response', response);
