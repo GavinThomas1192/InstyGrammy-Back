@@ -1,5 +1,5 @@
 'use strict';
-
+import superagent from 'superagent';
 import {Router} from 'express';
 import User from '../model/user.js';
 import parserBody from './parser-body.js';
@@ -12,7 +12,6 @@ export default new Router()
   if(!req.query.code) {
     res.redirect(process.env.FRONT_URL);
   } else {
-    console.log('First line of Else')
     superagent.post('https://www.googleapis.com/oauth2/v4/token')
       .type('form')
       .send({
@@ -23,7 +22,6 @@ export default new Router()
         redirect_uri: `${process.env.API_URL}/oauth/google/code`
       })
       .then(response => {
-        console.log('.then after first post');
         console.log('POST: oauth2/v4/token', response.body);
         return superagent.get('https://www.googleapis.com/plus/v1/people/me/openIdConnect')
           .set('Authorization', `Bearer ${response.body.access_token}`)
