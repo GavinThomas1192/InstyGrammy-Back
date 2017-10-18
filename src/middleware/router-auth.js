@@ -34,7 +34,7 @@ export default new Router()
     .then(user => user.tokenCreate())
     .then( token => {
       console.log('my oauth token:', token);
-      res.cookie('Giggle-Token', token);
+      res.cookie('X-Slugchat-Token', token);
       res.redirect(process.env.FRONT_URL);
     })
     .catch((error) => {
