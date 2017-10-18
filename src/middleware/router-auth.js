@@ -32,10 +32,12 @@ export default new Router()
     })
     .then(user => user.tokenCreate())
     .then( token => {
+      console.log('res**********', res);
       console.log('my oauth token:', token);
       res.cookie('X-Sluggram-Token', token);
       console.log('____REDIRECTING TO FRONTURL____');
       res.redirect(process.env.FRONT_URL);
+      // res.send(token);
     })
     .catch((error) => {
       console.error(error);
