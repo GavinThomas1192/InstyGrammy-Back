@@ -8,7 +8,7 @@ import {log, daysToMilliseconds} from '../lib/util.js';
 
 export default new Router()
 
-userRouter.get('/oauth/google/code', (req, res, next) => {
+.get('/oauth/google/code', (req, res, next) => {
   if (!req.query.code) {
     res.redirect(process.env.FRONT_URL);
   } else {
