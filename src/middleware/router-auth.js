@@ -34,7 +34,7 @@ export default new Router()
     .then( token => {
       console.log('my oauth token:', token);
       res.cookie('X-Sluggram-Token', token);
-      res.redirect(process.env.FRONT_URL);
+      res.redirect('____REDIRECTING TO FRONTURL____', process.env.FRONT_URL);
     })
     .catch((error) => {
       console.error(error);
