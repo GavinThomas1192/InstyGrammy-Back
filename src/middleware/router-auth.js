@@ -4,7 +4,7 @@ import {Router} from 'express';
 import User from '../model/user.js';
 import parserBody from './parser-body.js';
 import {basicAuth} from './parser-auth.js';
-import {log, daysToMilliseconds} from '../lib/util.js';
+import {log, daysToMillisseconds} from '../lib/util.js';
 
 export default new Router()
 
@@ -34,7 +34,7 @@ export default new Router()
     .then(user => user.tokenCreate())
     .then( token => {
       console.log('my oauth token:', token);
-      res.cookie('X-Slugchat-Token', token);
+      res.cookie('X-Sluggram-Token', token);
       res.redirect(process.env.FRONT_URL);
     })
     .catch((error) => {
