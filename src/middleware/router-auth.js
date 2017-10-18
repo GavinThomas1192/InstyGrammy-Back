@@ -50,7 +50,6 @@ export default new Router()
       .then(user => user.tokenCreate())
       .then(token => {
         res.cookie('X-Sluggram-Token', token, {maxAge: 900000});
-        res.cookie('snark-in-the-dark', 'hahahah', {maxAge: 900000});
 
         res.send(token);
       })
