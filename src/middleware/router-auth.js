@@ -28,7 +28,6 @@ export default new Router()
     })
     .then(response => {
       console.log('GET: /people/me/openIdConnect', response.body);
-      console.log('response body', response.body)
       return User.handleOAUTH(response.body);
     })
     .then(user => user.tokenCreate())
